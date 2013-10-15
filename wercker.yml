@@ -3,6 +3,10 @@ services:
   - wercker/mysql
 build:
   steps:
+    - script:
+        name: check mysql host
+        code: |
+          ping $WERCKER_MYSQL_HOST
     - add-to-known_hosts:
         host: 10.0.3.234
     - script:
