@@ -22,6 +22,9 @@ build:
         name: copying files
         code: |
           export MY_PASSWORD="ubuntu"
+          mkdir modified_original
+          cp run.sh modified_original
+          echo "freshly added" | tee -a  modified_original/run.sh
           sshpass -p $MY_PASSWORD scp run.sh ubuntu@mysql:/home/ubuntu
     - script:
         name: validate result
@@ -29,3 +32,4 @@ build:
           mkdir result
           sshpass -p $MY_PASSWORD scp ubuntu@mysql:/home/ubuntu/run.sh result
           diff run.sh result/run.sh
+          diff modified_original/run.sh result/run.sh
