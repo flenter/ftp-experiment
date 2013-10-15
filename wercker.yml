@@ -10,7 +10,7 @@ build:
     - script:
         name: set CUSTOM_THING
         code: |
-
+          cat /etc/hosts
     - add-to-known_hosts:
         host: mysql
     - script:
