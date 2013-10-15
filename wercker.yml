@@ -3,6 +3,8 @@ services:
   - wercker/mysql
 build:
   steps:
+    - install-packages:
+        packages: sshpass
     - script:
         name: add to host file
         code:
@@ -20,4 +22,5 @@ build:
     - script:
         name: login
         code: |
-          ssh $WERCKER_ADD_TO_KNOWN_HOSTS_HOSTNAME
+          sshpass -p 'ubuntu' scp run.sh ubuntu@mysql:/home/ubuntu
+          # ssh $WERCKER_ADD_TO_KNOWN_HOSTS_HOSTNAME
