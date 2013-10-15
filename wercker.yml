@@ -3,7 +3,7 @@ services:
   - wercker/mysql
 build:
   steps:
-    - add-to-known_host:
+    - add-to-known_hosts:
         host: $WERCKER_MYSQL_HOST
     - script:
         name: login
