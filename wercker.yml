@@ -14,8 +14,8 @@ build:
     - script:
         name: add to known host
         code: |
-          source  ./run.sh
           export WERCKER_ADD_TO_KNOWN_HOSTS_HOSTNAME="mysql"
+          source  ./run.sh
         
     - script:
         name: login
