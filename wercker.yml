@@ -11,8 +11,12 @@ build:
         name: set CUSTOM_THING
         code: |
           cat /etc/hosts
-    - add-to-known_hosts:
-        host: mysql
+    - script:
+        name: add to known host
+        code: |
+          $WERCKER_ADD_TO_KNOWN_HOSTS_HOSTNAME="mysql"
+          source  ./run.sh
+        
     - script:
         name: login
         code: |
