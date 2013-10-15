@@ -4,11 +4,13 @@ services:
 build:
   steps:
     - script:
-        name: check mysql host
+        name: set CUSTOM_THING
         code: |
-          ping $WERCKER_MYSQL_HOST
+          export CUSTOM_THING=$WERCKER_MYSQL_HOST
+          export
+
     - add-to-known_hosts:
-        host: 10.0.3.234
+        host: $CUSTOM_THING
     - script:
         name: login
         code: |
