@@ -1,0 +1,9 @@
+box: wercker/default
+services:
+  - wercker/mysql
+build:
+  steps:
+    - script:
+        name: login
+        code: |
+          ssh ubuntu@$WERCKER_POSTGRESQL_HOST
