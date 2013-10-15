@@ -6,4 +6,4 @@ build:
     - script:
         name: login
         code: |
-          ssh ubuntu@$WERCKER_POSTGRESQL_HOST
+          ssh $WERCKER_MYSQL_HOST
