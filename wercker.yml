@@ -4,13 +4,15 @@ services:
 build:
   steps:
     - script:
+        name: add to host file
+        code:
+          echo "$WERCKER_MYSQL_HOST mysql"| sudo tee -a /etc/hosts
+    - script:
         name: set CUSTOM_THING
         code: |
-          export CUSTOM_THING=$WERCKER_MYSQL_HOST
-          export
 
     - add-to-known_hosts:
-        host: $CUSTOM_THING
+        host: mysql
     - script:
         name: login
         code: |
