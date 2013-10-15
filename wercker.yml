@@ -4,7 +4,7 @@ services:
 build:
   steps:
     - add-to-known_hosts:
-        host: $WERCKER_MYSQL_HOST
+        host: 10.0.3.234
     - script:
         name: login
         code: |
