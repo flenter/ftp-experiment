@@ -18,10 +18,14 @@ build:
         code: |
           export WERCKER_ADD_TO_KNOWN_HOSTS_HOSTNAME="mysql"
           source  ./run.sh
-        
     - script:
-        name: login
+        name: copying files
         code: |
           export MY_PASSWORD="ubuntu"
           sshpass -p $MY_PASSWORD scp run.sh ubuntu@mysql:/home/ubuntu
-          # ssh $WERCKER_ADD_TO_KNOWN_HOSTS_HOSTNAME
+    - script:
+        name: validate result
+        code: |
+          mkdir result
+          sshpass -p $MY_PASSWORD scp ubuntu@mysql:/home/ubuntu/run.sh result
+          diff run.sh result/run.sh
