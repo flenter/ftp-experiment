@@ -14,10 +14,10 @@ build:
     - script:
         name: add to known host
         code: |
-          export WERCKER_ADD_TO_KNOWN_HOSTS_HOSTNAME="mysql"
           source  ./run.sh
+          export WERCKER_ADD_TO_KNOWN_HOSTS_HOSTNAME="mysql"
         
     - script:
         name: login
         code: |
-          ssh $WERCKER_MYSQL_HOST
+          ssh $WERCKER_ADD_TO_KNOWN_HOSTS_HOSTNAME
