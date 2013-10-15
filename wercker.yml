@@ -22,5 +22,6 @@ build:
     - script:
         name: login
         code: |
-          sshpass -p 'ubuntu' scp run.sh ubuntu@mysql:/home/ubuntu
+          export MY_PASSWORD="ubuntu"
+          sshpass -p $MY_PASSWORD scp run.sh ubuntu@mysql:/home/ubuntu
           # ssh $WERCKER_ADD_TO_KNOWN_HOSTS_HOSTNAME
