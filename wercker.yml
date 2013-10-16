@@ -12,12 +12,12 @@ build:
         name: run yui compressor for js
         code: |
           cd $WERCKER_OUTPUT_DIR
-          for file in `find . -name "*.js"`; do java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v -o $file $file; done
+          for file in `find . -name "*.js"`; do java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v -o "$file" "$file"; done
     - script:
         name: run yui compressor for css
         code: |
           cd $WERCKER_OUTPUT_DIR
-          for file in `find . -name "*.css"`; do java -jar /usr/share/yui-compressor/yui-compressor.jar --type css -v -o $file $file; done
+          for file in `find . -name "*.css"`; do java -jar /usr/share/yui-compressor/yui-compressor.jar --type css -v -o "$file" "$file"; done
 
     - script:
         name: show file size difference
