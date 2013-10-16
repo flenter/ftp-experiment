@@ -1,31 +1,8 @@
-box: wercker/default
-services:
-  - wercker/mysql
+box: wercker/php
 build:
   steps:
     - install-packages:
-        packages: sshpass
-    - script:
-        name: add to host file
-        code:
-          echo "$WERCKER_MYSQL_HOST mysql"| sudo tee -a /etc/hosts
-    - script:
-        name: set CUSTOM_THING
-        code: |
-          cat /etc/hosts
-    - script:
-        name: add to known host
-        code: |
-          export WERCKER_ADD_TO_KNOWN_HOSTS_HOSTNAME="mysql"
-          source  ./run.sh
-    - script:
-        name: copying files
-        code: |
-          export MY_PASSWORD="ubuntu"
-          mkdir modified_original
-          cp run.sh modified_original
-          echo "freshly added" | tee -a  modified_original/run.sh
-          sshpass -p $MY_PASSWORD scp run.sh ubuntu@mysql:/home/ubuntu
+        packages: yui-compressor
     - script:
         name: validate result
         code: |
