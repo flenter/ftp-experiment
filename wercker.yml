@@ -9,10 +9,16 @@ build:
           mkdir -p $WERCKER_OUTPUT_DIR/views
           cp -r * $WERCKER_OUTPUT_DIR/views
     - script:
-        name: run yui compressor
+        name: run yui compressor for js
         code: |
           cd $WERCKER_OUTPUT_DIR
-          find .
-          java -jar /usr/share/yui-compressor/yui-compressor.jar --type css -v ***/*.css
-          java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v ***/*.js
+          for file in `find . -name "*.js"`; do java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v $file $file; done
+    - script:
+        name: run yui compressor for css
+        code: |
+          cd $WERCKER_OUTPUT_DIR
+          for file in `find . -name "*.css"`; do java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v $file $file; done
+
+          # java -jar /usr/share/yui-compressor/yui-compressor.jar --type css -v views/*.css
+          # java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v views/*.js
 
