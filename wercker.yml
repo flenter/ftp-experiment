@@ -6,7 +6,8 @@ build:
     - script:
         name: prepare build for output
         code: |
-          cp -r * $WERCKER_OUTPUT_DIR
+          mkdir -p $WERCKER_OUTPUT_DIR/views
+          cp -r * $WERCKER_OUTPUT_DIR/views
     - script:
         name: run yui compressor
         code: |
