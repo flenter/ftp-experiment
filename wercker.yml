@@ -17,7 +17,7 @@ build:
         name: run yui compressor for css
         code: |
           cd $WERCKER_OUTPUT_DIR
-          for file in `find . -name "*.css"`; do java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v $file $file; done
+          for file in `find . -name "*.css"`; do java -jar /usr/share/yui-compressor/yui-compressor.jar --type css -v $file $file; done
 
           # java -jar /usr/share/yui-compressor/yui-compressor.jar --type css -v views/*.css
           # java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v views/*.js
