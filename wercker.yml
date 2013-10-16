@@ -4,9 +4,13 @@ build:
     - install-packages:
         packages: yui-compressor
     - script:
-        name: validate result
+        name: prepare build for output
         code: |
-          mkdir result
-          sshpass -p $MY_PASSWORD scp ubuntu@mysql:/home/ubuntu/run.sh result
-          diff run.sh result/run.sh
-          diff modified_original/run.sh result/run.sh
+          cp -r * $WERCKER_OUTPUT_DIR
+    - script:
+        name: run yui compressor
+        code: |
+          cd $WERCKER_OUTPUT_DIR
+          java -jar /usr/share/yui-compressor/yui-compressor.jar --type css -v **/*.css
+          java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v **/*.js
+
