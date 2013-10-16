@@ -12,6 +12,6 @@ build:
         name: run yui compressor
         code: |
           cd $WERCKER_OUTPUT_DIR
-          java -jar /usr/share/yui-compressor/yui-compressor.jar --type css -v **/*.css
-          java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v **/*.js
+          java -jar /usr/share/yui-compressor/yui-compressor.jar --type css -v ***/*.css
+          java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v ***/*.js
 
