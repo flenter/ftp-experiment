@@ -4,7 +4,7 @@ build:
     - install-packages:
         packages: yui-compressor
     - script:
-        name: prepare build for output
+        name: move code to output dir
         code: |
           mkdir -p $WERCKER_OUTPUT_DIR/views
           cp -r * $WERCKER_OUTPUT_DIR/views
@@ -19,6 +19,8 @@ build:
           cd $WERCKER_OUTPUT_DIR
           for file in `find . -name "*.css"`; do java -jar /usr/share/yui-compressor/yui-compressor.jar --type css -v $file $file; done
 
-          # java -jar /usr/share/yui-compressor/yui-compressor.jar --type css -v views/*.css
-          # java -jar /usr/share/yui-compressor/yui-compressor.jar --type js -v views/*.js
-
+    - script:
+        name: show file size difference
+        code: |
+          ls -la $WERCKER_OUTPUT_DIR/views/css
+          ls -la $WERCKER_SOURCE_DIR/css
